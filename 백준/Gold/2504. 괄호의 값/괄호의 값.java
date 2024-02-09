@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
@@ -8,11 +7,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
-//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        // 입력
-//        String input = br.readLine();
         String input = sc.nextLine();
-        if (input.length() % 2 == 1 || input.length() > 30) {
+        if (input.length() % 2 == 1) {
             System.out.println(0);
             return ;
         }
