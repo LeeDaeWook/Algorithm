@@ -3,14 +3,14 @@ import java.lang.Math;
 
 class Solution {
     int answer = 0;
-    int QUEEN = 1;
-    int EMPTY = 0;
-    int[][] board;
     boolean[] column;
+    boolean[] diagonal1;
+    boolean[] diagonal2;
 
     public int solution(int n) {
-        board = new int[n][n];
         column = new boolean[n];
+        diagonal1 = new boolean[n * 2 - 1];
+        diagonal2 = new boolean[n * 2 - 1];
         recursive(0, n);
         return answer;
     }
@@ -22,25 +22,12 @@ class Solution {
             return;
         }
         for (int i = 0; i < n; i++) {
-            board[row][i] = QUEEN;
-            if (!column[i] && isValid(row, i, n)) {
-                column[i] = true;
-                recursive(row+1, n);
-                column[i] = false;
-            }
-            board[row][i] = EMPTY;
+            // 열, 대각선(/방향), 대각선(\방향) 검사
+            if (column[i] || diagonal1[row + i] || diagonal2[row - i + n - 1])
+                continue;
+            column[i] = diagonal1[row+i] = diagonal2[row - i + n - 1] = true;
+            recursive(row+1, n);
+            column[i] = diagonal1[row+i] = diagonal2[row - i + n - 1] = false;
         }
-    }
-    
-    public boolean isValid(int row, int col, int n) {
-        // 대각선 검사
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (board[i][j] == QUEEN && Math.abs(i - row) == Math.abs(j - col) && i != row && j != col)
-                    return false;
-            }
-        }
-
-        return true;
     }
 }
