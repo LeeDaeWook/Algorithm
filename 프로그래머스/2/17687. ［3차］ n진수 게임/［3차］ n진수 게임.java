@@ -1,7 +1,7 @@
 import java.util.*;
 
 class Solution {
-    String s = "0123456789ABCDEF";
+    char[] s = "0123456789ABCDEF".toCharArray();
     
     public String solution(int n, int t, int m, int p) {
         StringBuilder answer = new StringBuilder();
@@ -10,7 +10,7 @@ class Solution {
         for (int i = t*m - 1; i >= 0; i--) {
             int num = i;
             while (num > 0) {
-                nums.addFirst(s.toCharArray()[num%n]);
+                nums.addFirst(s[num%n]);
                 num /= n;
             }
         }    
