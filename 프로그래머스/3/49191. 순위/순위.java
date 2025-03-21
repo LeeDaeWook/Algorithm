@@ -5,7 +5,6 @@ class Solution {
         int answer = 0;
         Map<Integer, Set<Integer>[]> graph = new HashMap<>();
         Deque<Integer> q = new ArrayDeque<>();
-        Set<Integer> nodeCount = new HashSet<>();
         
         // 그래프 초기화
         for (int i = 1; i <= n; i++) {
@@ -23,6 +22,8 @@ class Solution {
         }
         
         for (int i = 1; i <= n; i++) {
+            Set<Integer> nodeCount = new HashSet<>();
+            
             // 현재 노드한테 진 노드들과 이긴 노드들 각각을 순회
             for (int j = 0; j < 2; j++) {
                 for (int node: graph.get(i)[j]) {
@@ -41,7 +42,7 @@ class Solution {
             }
             if (nodeCount.size() == n - 1)
                 answer++;
-            nodeCount.clear();
+            // nodeCount.clear();
         }
        
         return answer;
