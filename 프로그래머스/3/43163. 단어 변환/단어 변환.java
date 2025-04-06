@@ -25,11 +25,13 @@ class Solution {
             // 변환했던 단어가 아니고, 현재 단어와 한 글자만 다르면 한 depth 더 들어가서 로직 수행
             if (!visited[i] && isOneLetterDiff(word, words[i])) {
                 // 방문한 단어 체크
+                visited[i] = true;
+
+                dfs(words[i], target, words, depth+1, visited, len);
+                
                 boolean[] newVisited = new boolean[len];
                 System.arraycopy(visited, 0, newVisited, 0, len);
-                newVisited[i] = true;
-                
-                dfs(words[i], target, words, depth+1, newVisited, len);
+                visited = newVisited;
             }         
         }
     }
