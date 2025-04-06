@@ -28,10 +28,10 @@ class Solution {
                 visited[i] = true;
 
                 dfs(words[i], target, words, depth+1, visited, len);
-                
-                boolean[] newVisited = new boolean[len];
-                System.arraycopy(visited, 0, newVisited, 0, len);
-                visited = newVisited;
+                visited[i] = false;
+                // boolean[] newVisited = new boolean[len];
+                // System.arraycopy(visited, 0, newVisited, 0, len);
+                // visited = newVisited;
             }         
         }
     }
