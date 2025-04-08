@@ -10,13 +10,6 @@ class Solution {
         
         visited[0] = "ICN";
         dfs(used, tickets, "ICN", visited, 1, len);
-        
-        if (answer == null) {
-            for (int i = 0; i < visited.length; i++) {
-                if (visited[i] == null)
-                    return Arrays.copyOf(visited, i);
-            }
-        }
             
         return answer;
     }
